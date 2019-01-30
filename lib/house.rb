@@ -36,6 +36,6 @@ class House
   end
 
   def rooms_by_category
-    @rooms.sort {|room| room.category}
+    @rooms.sort {|room| room.category <=> room.category}
   end
 end
