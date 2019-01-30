@@ -6,27 +6,36 @@ require 'pry'
 
 class HouseTest < Minitest::Test
 
-def setup
-  @room = Room.new(:bedroom, 10, 13)
-  @house = House.new("400000", "123 sugar lane")
+  def setup
+    @room_1 = Room.new(:bedroom, 10, 13)
+    @room_2 = Room.new(:bedroom, 11, 15)
+    @house = House.new("400000", "123 sugar lane")
+  end
+
+  def test_house_exists
+    assert_instance_of House, @house
+  end
+
+  def test_house_has_price
+    assert_equal "400000", @house.price
+  end
+
+  def test_house_has_address
+    assert_equal "123 sugar lane", @house.address
+  end
+
+  def test_house_can_have_rooms
+    assert_equal [], @house.rooms
+  end
+
+  def test_house_can_add_rooms
+    @house.add_room(@room_1)
+    @house.add_room(@room_2)
+    assert_equal [[:bedroom, 10, 13], [:bedroom, 11, 15]], @house.rooms
+  end
 end
 
-end
 
-# pry(main)> require './lib/room'
-# #=> true
-#
-# pry(main)> require './lib/house'
-# #=> true
-#
-# pry(main)> house = House.new("$400000", "123 sugar lane")
-# #=> #<House:0x00007fccd30375f8...>
-#
-# pry(main)> house.price
-# #=> 400000
-#
-# pry(main)> house.address
-# #=> "123 sugar lane"
 #
 # pry(main)> house.rooms
 # #=> []
