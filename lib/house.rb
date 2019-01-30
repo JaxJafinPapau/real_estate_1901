@@ -2,9 +2,17 @@ require './lib/room'
 require 'pry'
 
 class House
+  attr_reader :price,
+              :address,
+              :rooms
 
-def initialize(argument)
-  @argument = argument
-end
+  def initialize(price, address)
+    @price = price
+    @address = address
+    @rooms = []
+  end
 
+  def add_room(room)
+    @rooms << room
+  end
 end
