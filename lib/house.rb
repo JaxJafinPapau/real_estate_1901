@@ -25,4 +25,17 @@ class House
     areas = @rooms.map {|room| room.area}
     areas.sum
   end
+
+  def price_per_square_foot
+    unit_price = @price.to_f / area.to_f
+    unit_price.round(2)
+  end
+
+  def rooms_sorted_by_area
+    @rooms.sort {|room| room.area}
+  end
+
+  def rooms_by_category
+    @rooms.sort {|room| room.category}
+  end
 end
